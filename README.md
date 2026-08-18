@@ -2,7 +2,7 @@
 
 Talks and slide decks, built with [Marp](https://marp.app/) and published to GitHub Pages.
 
-- Site: https://harttle.github.io/reports/
+- Site: https://harttle.github.io/reports/ (also https://www.harttle.com/reports/)
 - LiquidJS talk: https://harttle.github.io/reports/liquidjs-opensource/
 
 ## Layout
