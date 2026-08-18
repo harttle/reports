@@ -3,14 +3,14 @@
 Talks and slide decks, built with [Marp](https://marp.app/) and published to GitHub Pages.
 
 - Site: https://harttle.github.io/reports/ (also https://www.harttle.com/reports/)
-- LiquidJS talk: https://harttle.github.io/reports/liquidjs-opensource/
+- LiquidJS talk: https://harttle.github.io/reports/liquidjs-nus-2026-08/
 
 ## Layout
 
 Each report lives in its own directory with a `slides.md` file (and optional `theme.css` / `assets/`):
 
 ```
-liquidjs-opensource/
+liquidjs-nus-2026-08/
   slides.md
   theme.css
   assets/
@@ -26,4 +26,4 @@ npm start          # live Marp server
 npm run build      # build all reports into dist/
 ```
 
-While the server is running, open http://localhost:8080/liquidjs-opensource/slides.md
+While the server is running, open http://localhost:8080/liquidjs-nus-2026-08/slides.md

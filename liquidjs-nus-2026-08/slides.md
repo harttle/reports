@@ -2,6 +2,7 @@
 marp: true
 theme: liquidjs
 _header: ''
+footer: '<span class="liquidjs-credit"><img src="assets/liquidjs-logo.png" alt="" /> <strong>LiquidJS</strong></span>'
 _paginate: false
 -->
 
