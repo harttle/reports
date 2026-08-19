@@ -7,16 +7,18 @@ Talks and slide decks, built with [Marp](https://marp.app/) and published to Git
 
 ## Layout
 
-Each report lives in its own directory with a `slides.md` file (and optional `theme.css` / `assets/`):
+Each report lives in its own directory with a `slides.md` file. Shared assets and slide styles live at the repo root:
 
 ```
+assets/
+  liquidjs-logo.png
+themes/
+  liquidjs.css
 liquidjs-nus-2026-08/
   slides.md
-  theme.css
-  assets/
 ```
 
-`npm run build` finds every such directory and writes HTML into `dist/`.
+`npm run build` runs `scripts/build.mjs`, which builds every `*/slides.md` into `dist/`. Shared Marp options live in `.marprc.yml`.
 
 ## Commands
 

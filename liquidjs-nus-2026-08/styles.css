@@ -1,0 +1,18 @@
+section.template-engine {
+  padding: 36px 40px 48px;
+}
+
+section.template-engine h1 {
+  margin: 0 0 3.5rem;
+  border-bottom: none;
+  padding-bottom: 0;
+  font-size: 1.65rem;
+  text-align: center;
+}
+
+section.template-engine img {
+  display: block;
+  width: 1080px;
+  max-width: 100%;
+  margin: 0 auto;
+}
