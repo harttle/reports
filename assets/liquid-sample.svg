@@ -11,7 +11,7 @@
   >
     <tspan fill="#d4d4d4">&lt;</tspan><tspan fill="#9cdcfe">p</tspan><tspan fill="#d4d4d4">&gt;</tspan>
     <tspan fill="#ffffff">Hello, {{ name | </tspan>
-    <tspan fill="#4ec9b0">upcase</tspan>
+    <tspan fill="#4ec9b0">capitalize</tspan>
     <tspan fill="#ffffff"> }}!</tspan>
     <tspan fill="#d4d4d4">&lt;/</tspan><tspan fill="#9cdcfe">p</tspan><tspan fill="#d4d4d4">&gt;</tspan>
   </text>

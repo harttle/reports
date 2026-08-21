@@ -28,7 +28,7 @@ Yang Jun
 
 # About Me
 
-My name is [Yang Jun](https://www.linkedin.com/in/harttle/), I have worked as engineer and architect at tech companies like Baidu, Microsoft, TikTok, AirWallex.
+My name is [Yang Jun](https://www.linkedin.com/in/harttle). I have worked as an engineer and architect at companies including Baidu, Microsoft, TikTok, and Airwallex.
 
 And I'm the creator and maintainer of the **LiquidJS** template engine.
 
@@ -39,10 +39,9 @@ And I'm the creator and maintainer of the **LiquidJS** template engine.
 
 # Today
 
-1. **What is LiquidJS?** — what is template engine, what is Liquid, etc.
-2. **Who's using LiquidJS?** — use cases and adoption
-3. **How LiquidJS works?** — parse, render, the render flow
-4. **Maintaining an open source library** — what it's like to maintain a project
+1. **What LiquidJS is** — what it is and who uses it
+2. **How LiquidJS works** — parsing, rendering, and the render flow
+3. **Maintaining an open source library** — what it's like to maintain a project
 
 ---
 
@@ -50,8 +49,8 @@ And I'm the creator and maintainer of the **LiquidJS** template engine.
 <!-- _class: section-start -->
 <div class="section-start">
 <div class="section-start-image">
-<img src="../assets/liquidjs-logo.png" />
-<img src="../assets/liquid-sample.svg" />
+<img src="../assets/liquidjs-logo.png" style="width: 96px" />
+<img src="../assets/users.png" style="width: 560px; max-width: 90%" />
 </div>
 <div class="section-start-content">
 
@@ -86,7 +85,7 @@ section.template-engine-spaced h1 {
 }
 </style>
 
-# So what tempale engines actually do?
+# Template engines made simple
 
 ![width:1080px](../assets/template-engine-diagram.svg)
 
@@ -94,7 +93,7 @@ section.template-engine-spaced h1 {
 
 # Template engines vs. reactive UI frameworks
 
-They solve different problems. React or Vue can power an application UI while template engine rendering is typicall one pass rendering.
+Template engines and reactive frameworks may both use templates, but they solve different problems:
 
 | | Template engine | Reactive UI framework |
 | --- | --- | --- |
@@ -114,7 +113,7 @@ They solve different problems. React or Vue can power an application UI while te
 | **LiquidJS** | `{{value}}` / `{% tag %}` | Tags + filters | Shopify- and Jekyll-compatible templates in JavaScript |
 | **Nunjucks** | `{{value}}` / `{% tag %}` | Rich template logic | Content-heavy sites with inheritance and macros |
 
-Different engines make different trade-offs, especially between flexibility and safety.
+Different engines make different trade-offs, especially between power and safety.
 
 ---
 
@@ -123,18 +122,18 @@ Different engines make different trade-offs, especially between flexibility and 
 
 # The Liquid Language
 
-Liquid is a **template language** originally defined by Shopify, and implemented in Ruby.
+Liquid is a **template language** originally defined by Shopify and implemented in Ruby.
 
-- Adopted by Jekyll, the Ruby static site generator, and thus
-- Github Pages as it's also based on Ruby ecosystem
+- Adopted by Jekyll, the Ruby static site generator
+- Supported by GitHub Pages, which builds Jekyll sites
 
-The syntax is very straightforward and also flexible enough.
+The syntax is straightforward while remaining expressive enough.
 
 ```liquid
-<h2>{{ product.title }}</h2>
+<h2>{{ product.title | upcase }}</h2>
 
 {% if product.available %}
-  <p>{{ product.price | money }}</p>
+  <p>{{ product.price }}</p>
   <button>Add to cart</button>
 {% else %}
   <p>{{ product.title }} is sold out.</p>
@@ -164,24 +163,7 @@ await engine.parseAndRender(
 
 ---
 
-<!-- _class: section-start -->
-<div class="section-start">
-<div class="section-start-image">
-<img src="../assets/liquidjs-logo.png" style="width: 96px" />
-<img src="../assets/users.png" style="width: 560px; max-width: 90%" />
-</div>
-<div class="section-start-content">
-
-# Part 2
-
-## Who's using LiquidJS?
-
-</div>
-</div>
-
----
-
-# Adoption cases
+# Use cases
 
 | Use case | How teams use it |
 | --- | --- |
@@ -195,40 +177,17 @@ For more details, check [liquidjs.com](https://liquidjs.com/) and [harttle/liqui
 
 ---
 
-# Adoption timeline
-
-| Date | Milestone |
-| --- | --- |
-| **Jun 14, 2016** | First npm release: `shopify-liquid@1.0.0` |
-| **Jun 23, 2016** | First GitHub issue: a request for `layout`, `include`, and `block` support |
-| **Sep 12, 2016** | First community pull request: an async rendering experiment |
-| **Feb 26, 2020** | First sponsor from Open Collective: Dropkiq |
-| **Jan 26, 2026** | Reached 1M weekly npm downloads |
-| **Aug 20, 2026** | 1.3M weekly download, 88K dependants, 93 contributors, 20 sponsors |
-
----
-# What helped adoption?
-
-**Keeping it reliable**
-
-- Stay compatible with **Shopify Liquid** and **Jekyll** wherever possible
-- Invest in **testing** — LiquidJS now has 1,640 test cases
-
-**Making it developer-friendly**
-
-- Built-in **TypeScript** types, clear [documentation](https://liquidjs.com) and interactive [demos](https://liquidjs.com/playground.html)
-- Flexible **distribution options** — Node.js, browser bundle, and CLI
-
----
-
 <!-- _class: section-start -->
 <div class="section-start">
-<div class="section-start-image"><img src="../assets/liquidjs-logo.png" /></div>
+<div class="section-start-image">
+<img src="../assets/liquidjs-logo.png" />
+<img src="../assets/liquid-sample.svg" />
+</div>
 <div class="section-start-content">
 
-# Part 3
+# Part 2
 
-## How LiquidJS works?
+## How LiquidJS works
 
 </div>
 </div>
@@ -243,9 +202,9 @@ For more details, check [liquidjs.com](https://liquidjs.com/) and [harttle/liqui
 
 ---
 
-# A detailed breakdown
+# Process breakdown
 
-Take the template and data context, create an output string, as HTML typically.
+Combine a template with its data context to produce output—typically an HTML string.
 
 | Step | What happens |
 | --- | --- |
@@ -270,7 +229,8 @@ Hello, {{ name | capitalize }}!
 Grammar:
 
 ```bnf
-<output>   ::= "{{" <expression> "}}"
+<template>   ::= <template> <text> | <template> <output> | ""
+<output>     ::= "{{" <expression> "}}"
 <expression> ::= <identifier> | <identifier> "|" <filter>
 ```
 
@@ -284,8 +244,8 @@ Result AST (Abstract Syntax Tree):
 Template
 ├── Text("Hello, ")
 ├── Output
-│   └── Filter
-│       └── Variable("name")
+│   ├── Identifier("name")
+│   └── Filter("capitalize")
 └── Text("!")
 ```
 
@@ -303,7 +263,7 @@ The same parsed template can render repeatedly with different input data.
 
 # Parser implementation: in theory
 
-Any context-free grammar can be parsed by a state machine. The code highlighter in CodeMirror takes this approach. For example, the Liquid grammar:
+Context-free grammars can be parsed with stack-based algorithms. CodeMirror's Lezer generates an LR parser from a grammar. For example, its Liquid grammar:
 
 ```bnf
 Interpolation { interpolationStart expression Filter* interpolationEnd }
@@ -325,26 +285,26 @@ Liquid definition in CodeMirror: <https://code.haverbeke.berlin/codemirror/lang-
 
 ---
 
-# Parser implementation: in practical
+# Parser implementation: in practice
 
-Real-world parsers are more complex and often tailored to a special purpose.
+Production parsers are often tailored to a specific purpose.
 
 - In LiquidJS, the parser uses depth-first string traversal rather than a state machine.
 - It uses recursion and backtracking thus it's not `O(n)` complexity.
 
 | System | Approach | Source |
 | --- | --- | --- |
-| **LiquidJS** | DFS(tokenized Liquid) → AST for rendering templates | [Tokenizer](https://github.com/harttle/liquidjs/blob/master/src/parser/tokenizer.ts) · [Parser](https://github.com/harttle/liquidjs/blob/master/src/parser/parser.ts) |
-| **Vue** | Vue tokenizer + Babel parser → AST for generating UI code | [parser.ts](https://github.com/vuejs/core/blob/main/packages/compiler-core/src/parser.ts) |
-| **Babel / JSX** | DFS(tokenized JS/JSX) → AST for transforms and code generation | [babel-parser](https://github.com/babel/babel/blob/main/packages/babel-parser/src/parser/index.ts) |
+| **LiquidJS** | Tokenizer + hand-written parser → renderable `Template[]` | [Tokenizer](https://github.com/harttle/liquidjs/blob/master/src/parser/tokenizer.ts) · [Parser](https://github.com/harttle/liquidjs/blob/master/src/parser/parser.ts) |
+| **Vue** | Tokenizer + hand-written parser → compiler AST | [parser.ts](https://github.com/vuejs/core/blob/main/packages/compiler-core/src/parser.ts) |
+| **Babel / JSX** | Token stream + hand-written parser → transform AST | [babel-parser](https://github.com/babel/babel/tree/main/packages/babel-parser) |
 
-But the result is the same: AST structure of the template string
+The result is an AST representing the template string.
 
 ---
 
 # Render: AST + data → HTML
 
-Basically, we use input data as context, traverse the AST, and output values along the way. In practice, rendering is more involved:
+Rendering uses input data as context, traverses the AST, and emits values along the way. In practice, it is more involved:
 
 - Tags and filters, especially registered custom tags and filters
 - Scope stack maintenance, somewhat like a call stack
@@ -373,15 +333,15 @@ AST
 Template
 ├── Text("Hello, ")
 ├── Output
-│   └── Filter
-│       └── Variable("name")
+│   ├── Identifier("name")
+│   └── Filter("capitalize")
 └── Text("!")
 ```
 
 Data
 
 ```json
-{ "name": "liquidjs" }
+{ "name": "liquid" }
 ```
 
 </div>
@@ -390,7 +350,7 @@ Data
 Result HTML
 
 ```html
-Hello, Liquidjs!
+Hello, Liquid!
 ```
 
 </div>
@@ -403,7 +363,7 @@ Hello, Liquidjs!
 <div class="section-start-image"><img class="image-fill" src="../assets/contributors.png" /></div>
 <div class="section-start-content">
 
-# Part 4
+# Part 3
 
 ## Maintaining an open source library
 
@@ -429,20 +389,47 @@ Every issue points to functionality somebody depends on.
 
 When we build a useful project, document it well, and follow the feedback loop, the community gradually shapes it into something production-ready.
 
-- The design and code structure are very different from the initial version.
+- The design and implementation are very different from the initial version.
 - By August 2026, LiquidJS had [93 contributors](https://github.com/harttle/liquidjs/graphs/contributors).
-- The repository has recorded [405 pull requests](https://github.com/harttle/liquidjs/pulls?q=is%3Apr+is%3Aclosed) and [417 issues](https://github.com/harttle/liquidjs/issues?q=is%3Aissue); it has [281 forks](https://github.com/harttle/liquidjs/forks).
+- The repository has recorded [405 pull requests](https://github.com/harttle/liquidjs/pulls?q=is%3Apr) and [418 issues](https://github.com/harttle/liquidjs/issues?q=is%3Aissue); it has [281 forks](https://github.com/harttle/liquidjs/forks).
 
-The maintainer's job is to protect the project's purpose and principles.
+The maintainer's job is to protect the project's purpose and boundaries.
+
+---
+
+# The timeline of LiquidJS
+
+| Date | Milestone |
+| --- | --- |
+| **Jun 14, 2016** | First npm release: `shopify-liquid@1.0.0` |
+| **Jun 23, 2016** | First GitHub issue: a request for `layout`, `include`, and `block` support |
+| **Sep 12, 2016** | First community pull request: an async rendering experiment |
+| **Feb 26, 2020** | First sponsor from Open Collective: Dropkiq |
+| **Jan 26, 2026** | Reached 1M weekly npm downloads |
+| **Aug 20, 2026** | 1.7M weekly downloads, 627 npm dependents, 93 contributors, 20 sponsors |
+
+---
+
+# What helped adoption?
+
+**Keeping it reliable**
+
+- Stay compatible with **Shopify Liquid** and **Jekyll** wherever possible
+- Invest in **testing** — LiquidJS now has 1,640 test cases
+
+**Making it developer-friendly**
+
+- Built-in **TypeScript** types, clear [documentation](https://liquidjs.com) and interactive [demos](https://liquidjs.com/playground.html)
+- Flexible **distribution options** — Node.js, browser bundle, and CLI
 
 ---
 
 # How AI changes maintenance
 
-- **More reports.** AI makes large-scale analysis feasible for researchers.
-- **More contributions.** AI assists patches, tests, and documentation; verify correctness and compatibility.
+- **More security reports.** AI makes large-scale analysis feasible for security researchers.
+- **More pull requests.** With agents, code style and testing are no longer the main concern.
 
-**The bottleneck shifts to maintainers:** understanding the reports, the changes, security model, and release impact.
+**The bottleneck shifts to maintainers:** understanding the bug reports, the change sets, the impact of a change on the overall design, future plan and security model.
 
 ---
 

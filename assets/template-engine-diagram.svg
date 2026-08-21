@@ -17,7 +17,7 @@
       <text x="20" y="64" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="16">
         <tspan fill="#d4d4d4">&lt;</tspan><tspan fill="#9cdcfe">p</tspan><tspan fill="#d4d4d4">&gt;</tspan>
         <tspan fill="#ffffff"> Hello, {{ name | </tspan>
-        <tspan fill="#4ec9b0">upcase</tspan>
+        <tspan fill="#4ec9b0">capitalize</tspan>
         <tspan fill="#ffffff"> }}! </tspan>
         <tspan fill="#d4d4d4">&lt;/</tspan><tspan fill="#9cdcfe">p</tspan><tspan fill="#d4d4d4">&gt;</tspan>
       </text>
@@ -29,7 +29,7 @@
       <circle cx="50" cy="18" r="4.5" fill="#62c655" />
       <text x="20" y="64" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="16">
         <tspan fill="#9cdcfe">name:</tspan>
-        <tspan fill="#ce9178"> "Alex R."</tspan>
+        <tspan fill="#ce9178"> "liquid"</tspan>
       </text>
     </g>
   </g>
@@ -45,7 +45,7 @@
       <text x="20" y="64" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="16">
         <tspan fill="#d4d4d4">&lt;</tspan><tspan fill="#9cdcfe">p</tspan><tspan fill="#d4d4d4">&gt;</tspan>
         <tspan fill="#ffffff">Hello, </tspan>
-        <tspan fill="#ffffff">ALEX R.!</tspan>
+        <tspan fill="#ffffff">Liquid!</tspan>
         <tspan fill="#ffffff"> </tspan>
         <tspan fill="#d4d4d4">&lt;/</tspan><tspan fill="#9cdcfe">p</tspan><tspan fill="#d4d4d4">&gt;</tspan>
       </text>
